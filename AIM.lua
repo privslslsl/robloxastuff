@@ -42,9 +42,9 @@ function getPlayer()
 end
 
 getgenv().aimCheck = false
-UIS.InputBegan:Connect(function(i)
+UIS.InputBegan:Connect(function(inpt)
     if AIM.aimState == true then
-	if i.KeyCode == Enum.KeyCode[AIM.aimKey] then
+	if inpt.KeyCode == Enum.KeyCode[AIM.aimKey] then
 		getgenv().aimCheck = true
 		while task.wait() do
 		    if getPlayer() ~= nil then
@@ -56,8 +56,8 @@ UIS.InputBegan:Connect(function(i)
 end
 end)
 
-UIS.InputEnded:Connect(function(i)
-    if i.KeyCode == Enum.KeyCode[AIM.aimKey] then
+UIS.InputEnded:Connect(function(inpt)
+    if inpt.KeyCode == Enum.KeyCode[AIM.aimKey] then
     	getgenv().aimCheck = false
     end
 end)
