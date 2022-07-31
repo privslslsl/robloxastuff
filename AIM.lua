@@ -24,7 +24,7 @@ function getPlayer()
 	local cDist = math.huge
 	
 	for i,v in pairs(p:GetPlayers()) do
-		if v ~= lp and v ~= nil and v.Character.Humanoid.Health > 0 then
+		if v ~= lp and v ~= nil then
 		    local p2D, onS = camera:WorldToViewportPoint(v.Character.Head.Position)
 			local mousePos = Vector2.new(mouse.X,mouse.Y)
 			local playerPos = Vector2.new(p2D.X,p2D.Y)
@@ -47,7 +47,7 @@ UIS.InputBegan:Connect(function(inpt)
 	if inpt.KeyCode == Enum.KeyCode[AIM.aimKey] then
 		getgenv().aimCheck = true
 		while task.wait() do
-		    if getPlayer() ~= nil then
+		    if getPlayer() ~= nil and getPlayer().Character.Humanoid.Health > 0 then
             	camera.CFrame = CFrame.new(camera.CFrame.Position,getPlayer().Character[AIM.aimSpot].Position)
                 if getgenv().aimCheck == false then return end
             end
