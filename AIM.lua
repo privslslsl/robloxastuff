@@ -69,3 +69,5 @@ UIS.InputEnded:Connect(function(i)
     	getgenv().aimCheck = false
     end
 end)
+
+return AIM
