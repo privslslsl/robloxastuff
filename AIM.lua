@@ -14,7 +14,6 @@ local AIM = {
     aimActivated = false,
 	maxDist = 200,
 	fovMax = 100,
-	fovVis = true,
 	aimState = false,
 	aimSpot = "Head",
 	teamCheck = true,
@@ -23,7 +22,7 @@ local AIM = {
 --- Drawing Circle (FOV)
 
 local fovC = Drawing.new("Circle")
-fovC.Visible = AIM.fovVis
+fovC.Visible = true
 fovC.Radius = AIM.fovMax
 fovC.Color = Color3.fromRGB(255,255,255)
 fovC.Thickness = 1.15
