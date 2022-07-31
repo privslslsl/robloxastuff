@@ -47,8 +47,10 @@ UIS.InputBegan:Connect(function(i)
 	if i.KeyCode == Enum.KeyCode[AIM.aimKey] then
 		getgenv().aimCheck = true
 		while task.wait() do
-        	camera.CFrame = CFrame.new(camera.CFrame.Position,getPlayer().Character[AIM.aimSpot].Position)
-            if getgenv().aimCheck == false then return end
+		    if getPlayer() ~= nil then
+            	camera.CFrame = CFrame.new(camera.CFrame.Position,getPlayer().Character[AIM.aimSpot].Position)
+                if getgenv().aimCheck == false then return end
+            end
 		end
     end
 end
