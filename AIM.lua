@@ -24,7 +24,7 @@ function getPlayer()
 	local cDist = math.huge
 	
 	for i,v in pairs(p:GetPlayers()) do
-		if v ~= lp and v ~= nil and v.Team ~= lp.Team and v.Character.Humanoid.Health > 0 then
+		if v ~= lp and v ~= nil and v.Character.Humanoid.Health > 0 then
 		    local p2D, onS = camera:WorldToViewportPoint(v.Character.Head.Position)
 			local mousePos = Vector2.new(mouse.X,mouse.Y)
 			local playerPos = Vector2.new(p2D.X,p2D.Y)
