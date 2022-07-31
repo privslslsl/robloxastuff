@@ -41,39 +41,39 @@ UIS.InputEnded:Connect(function(inpt)
         AIM.aimActivated = false
     end
 end)
-
-rs.RenderStepped:Connect(function()
-    local cPlayer = nil
-	local cDist = math.huge
-	
-	if AIM.aimActivated then
-	    
-	    for i,v in next, p:GetChildren() do
-	        if v ~= lp and v ~= nil and v.Character:FindFirstChild("Humanoid").Health > 0 then
-	            print('p5')
-	            if AIM.teamCheck == true and v.Team ~= lp.Team or AIM.teamCheck == false then
-	                print('p4')
-        	        local p2D, onS = camera:WorldToViewportPoint(v.Character.Head.Position)
-        			local mousePos = Vector2.new(mouse.X,mouse.Y)
-        			local playerPos = Vector2.new(p2D.X,p2D.Y)
-        			local fovDist = (mousePos - playerPos).Magnitude
-        			local Dist = (lp.Character.HumanoidRootPart.Position - v.Character.HumanoidRootPart.Position).Magnitude
-        	        print('p2')
-        	        if onS then 
-        	           if Dist <= AIM.maxDist and fovDist < AIM.fovMax then
-        	                print('p1')
-            				cDist = Dist
-            				cPlayer = v
-            			end
-        	        end 
-	            end
-	        end
-	    end
-        if cPlayer ~= nil and cPlayer:FindFirstChild("Humanoid").Health > 0 and AIM.aimState == true then
-            camera.CFrame = CFrame.new(camera.CFrame.Position, getPlayer().Character[AIM.aimSpot].Position)
-            print('p3')
+spawn(function()
+    rs.RenderStepped:Connect(function()
+        local cPlayer = nil
+    	local cDist = math.huge
+    	
+    	if AIM.aimActivated then
+    	    
+    	    for i,v in next, p:GetChildren() do
+    	        if v ~= lp and v ~= nil and v.Character:FindFirstChild("Humanoid").Health > 0 then
+    	            print('p5')
+    	            if AIM.teamCheck == true and v.Team ~= lp.Team or AIM.teamCheck == false then
+    	                print('p4')
+            	        local p2D, onS = camera:WorldToViewportPoint(v.Character.Head.Position)
+            			local mousePos = Vector2.new(mouse.X,mouse.Y)
+            			local playerPos = Vector2.new(p2D.X,p2D.Y)
+            			local fovDist = (mousePos - playerPos).Magnitude
+            			local Dist = (lp.Character.HumanoidRootPart.Position - v.Character.HumanoidRootPart.Position).Magnitude
+            	        print('p2')
+            	        if onS then 
+            	           if Dist <= AIM.maxDist and fovDist < AIM.fovMax then
+            	                print('p1')
+                				cDist = Dist
+                				cPlayer = v
+                			end
+            	        end 
+    	            end
+    	        end
+    	    end
+            if cPlayer ~= nil and cPlayer:FindFirstChild("Humanoid").Health > 0 and AIM.aimState == true then
+                camera.CFrame = CFrame.new(camera.CFrame.Position, getPlayer().Character[AIM.aimSpot].Position)
+                print('p3')
+            end
         end
-    end
+    end)
 end)
-
 return AIM
