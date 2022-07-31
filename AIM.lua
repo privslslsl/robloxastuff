@@ -41,14 +41,6 @@ function getPlayer()
 	return cPlayer
 end
 
-function Toggle(bool)
-    if bool == true then
-        AIM.aimState = true
-    else 
-        AIM.aimState = false
-    end
-end
-
 getgenv().aimCheck = false
 UIS.InputBegan:Connect(function(i)
     if AIM.aimState == true then
