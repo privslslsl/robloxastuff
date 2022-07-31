@@ -13,7 +13,7 @@ local AIM = {
     aimKey = "LeftAlt",
     aimActivated = false,
 	maxDist = 200,
-	fovMax = 100,
+	fovMax = 50,
 	fovVis = false,
 	aimState = false,
 	aimSpot = "Head",
@@ -21,13 +21,13 @@ local AIM = {
 }
 
 --- Drawing Circle (FOV)
-print('p8')
+
 local fovC = Drawing.new("Circle")
 fovC.Visible = AIM.fovVis
 fovC.Radius = AIM.fovMax
 fovC.Color = Color3.fromRGB(255,255,255)
 fovC.Thickness = 1.15
-print('p7')
+
 --- Aimbot/Aimkey Control
 
 UIS.InputBegan:Connect(function(inpt)
@@ -43,7 +43,6 @@ UIS.InputEnded:Connect(function(inpt)
 end)
 
 rs.RenderStepped:Connect(function()
-    print('p6')
     local cPlayer = nil
 	local cDist = math.huge
 	
