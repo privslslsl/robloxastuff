@@ -10,13 +10,14 @@ local AIM = {
 	aimKey = "LeftAlt",
 	maxDist = 200,
 	fovMax = 100,
+	fovVis = false
 }
 
 local fovCircle = Drawing.new("Circle")
-fovCircle.Visible = true
+fovCircle.Visible = AIM.fovVis
 fovCircle.Radius = aimSettings.fovMax
 fovCircle.Position = Vector2.new(camera.ViewportSize.X/2,camera.ViewportSize.Y/2)
-fovCircle.Thickness = 0.75
+fovCircle.Thickness = 1
 
 
 function getPlayer()
