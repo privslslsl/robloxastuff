@@ -8,8 +8,8 @@ local AIM = {
 	aimKey = "LeftAlt",
 	maxDist = 200,
 	fovMax = 100,
-	fovVis = true,
-	aimState = true,
+	fovVis = false,
+	aimState = false,
 	aimSpot = "Head"
 }
 
