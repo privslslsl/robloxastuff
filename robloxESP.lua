@@ -5,9 +5,6 @@ local ESP = {
 	BoxShift = CFrame.new(0,-1.5,0),
 	BoxSize = Vector3.new(4,6,0),
 	Color = Color3.fromRGB(255, 255, 255),
-	Colorbox = Color3.fromRGB(255, 255, 255),
-    Colorname = Color3.fromRGB(255, 255, 255),
-    Colortracer = Color3.fromRGB(255, 255, 255),
 	FaceCamera = false,
 	Names = true,
 	TeamColor = true,
@@ -213,11 +210,7 @@ function boxBase:Update()
 				self.Components.Quad.PointB = Vector2.new(TopLeft.X, TopLeft.Y)
 				self.Components.Quad.PointC = Vector2.new(BottomLeft.X, BottomLeft.Y)
 				self.Components.Quad.PointD = Vector2.new(BottomRight.X, BottomRight.Y)
-				if TeamColor then
-				    self.Components.Quad.Color = Color
-				else
-				    self.Components.Quad.Color = Colorbox
-				end
+				self.Components.Quad.Color = color
 			else
 				self.Components.Quad.Visible = false
 			end
@@ -233,11 +226,7 @@ function boxBase:Update()
 			self.Components.Name.Visible = true
 			self.Components.Name.Position = Vector2.new(TagPos.X, TagPos.Y)
 			self.Components.Name.Text = self.Name
-			if TeamColor then
-				    self.Components.Name.Color = Color
-				else
-				    self.Components.Name.Color = Colorname
-				end
+			self.Components.Name.Color = color
 			
 			self.Components.Distance.Visible = false
 			self.Components.Distance.Position = Vector2.new(TagPos.X, TagPos.Y + 14)
@@ -259,11 +248,7 @@ function boxBase:Update()
 			self.Components.Tracer.Visible = true
 			self.Components.Tracer.From = Vector2.new(TorsoPos.X, TorsoPos.Y)
 			self.Components.Tracer.To = Vector2.new(cam.ViewportSize.X/2,cam.ViewportSize.Y/ESP.AttachShift)
-			if TeamColor then
-				    self.Components.Tracer.Color = Color
-				else
-				    self.Components.Tracer.Color = Colortracer
-				end
+			self.Components.Tracer.Color = color
 		else
 			self.Components.Tracer.Visible = false
 		end
