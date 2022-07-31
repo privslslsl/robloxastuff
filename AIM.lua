@@ -21,13 +21,13 @@ local AIM = {
 }
 
 --- Drawing Circle (FOV)
-
+print('p8')
 local fovC = Drawing.new("Circle")
 fovC.Visible = AIM.fovVis
 fovC.Radius = AIM.fovMax
 fovC.Color = Color3.fromRGB(255,255,255)
 fovC.Thickness = 1.15
-
+print('p7')
 --- Aimbot/Aimkey Control
 
 UIS.InputBegan:Connect(function(inpt)
@@ -43,6 +43,7 @@ UIS.InputEnded:Connect(function(inpt)
 end)
 
 rs.RenderStepped:Connect(function()
+    print('p6')
     local cPlayer = nil
 	local cDist = math.huge
 	
@@ -50,16 +51,18 @@ rs.RenderStepped:Connect(function()
 	    
 	    for i,v in next, p:GetChildren() do
 	        if v ~= lp and v ~= nil and v.Character:FindFirstChild("Humanoid").Health > 0 then
+	            print('p5')
 	            if AIM.teamCheck == true and v.Team ~= lp.Team or AIM.teamCheck == false then
-	                
+	                print('p4')
         	        local p2D, onS = camera:WorldToViewportPoint(v.Character.Head.Position)
         			local mousePos = Vector2.new(mouse.X,mouse.Y)
         			local playerPos = Vector2.new(p2D.X,p2D.Y)
         			local fovDist = (mousePos - playerPos).Magnitude
         			local Dist = (lp.Character.HumanoidRootPart.Position - v.Character.HumanoidRootPart.Position).Magnitude
-        	                
+        	        print('p2')
         	        if onS then 
         	           if Dist <= AIM.maxDist and fovDist < AIM.fovMax then
+        	                print('p1')
             				cDist = Dist
             				cPlayer = v
             			end
@@ -69,6 +72,9 @@ rs.RenderStepped:Connect(function()
 	    end
         if cPlayer ~= nil and cPlayer:FindFirstChild("Humanoid").Health > 0 and AIM.aimState == true then
             camera.CFrame = CFrame.new(camera.CFrame.Position, getPlayer().Character[AIM.aimSpot].Position)
+            print('p3')
         end
     end
 end)
+
+return AIM
